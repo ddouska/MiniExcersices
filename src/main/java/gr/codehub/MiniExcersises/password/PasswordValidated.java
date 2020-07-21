@@ -8,17 +8,17 @@ public class PasswordValidated {
 
 
     public static boolean isValidatedPasswordStringMatches(String password) {
-        String regExp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
-        if (password.matches("^(?=.*[0-9])(\"^(?=.*\\d)(?=.*[@#$%^&+=])(?=\\S+$).{8,})"))  {
+        String regExp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!~()_])(?=\\S+$).{8,}";
+        if (password.matches("^(?=.*[0-9])(\"^(?=.*\\d)(?=.*[@#$%^&+=!~()_])(?=\\S+$).{8,})"))  {
             System.out.println("Password OK");
 
-        } else if (password.matches("^(?=.*[@#$%^&+=])(?=\\S+$).{8,}")){
+        } else if (password.matches("^(?=.*[@#$%^&+=!~()_])(?=\\S+$).{8,}")){
             System.out.println("Strong Password");
 
-        } else if (password.matches("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}")){
+        } else if (password.matches("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!~()_])(?=\\S+$).{8,}")){
             System.out.println("Very Strong Password");
 
-        } else if (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}") ){
+        } else if (!password.matches(regExp) ){
             System.out.println("Invalid Password");
             System.out.println("Passwords must be 8-20 characters in length, contain at least one alpha character and one numeric character");
         }
@@ -28,7 +28,7 @@ public class PasswordValidated {
 
       //Better for big patterns
 //    public static boolean isValidatedPasswordStringMatches(String password) {
-//        String regExp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
+//        String regExp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!~()_])(?=\\S+$).{8,}";
 //        Pattern pattern = Pattern.compile(regExp);
 //        if (password == null) {
 //            return false;
