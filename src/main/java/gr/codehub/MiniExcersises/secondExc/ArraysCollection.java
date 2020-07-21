@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ArraysCollection implements Comparable{
+public class ArraysCollection {
 
     //Method that find Prime Number
     public static boolean isPrime(int n) {
@@ -49,14 +49,27 @@ public class ArraysCollection implements Comparable{
     }
 
 
-
     //6. Create an add functionality for large enough numbers that cannot be represented by int, long etc (hint, use arrays or lists)
-    public void longsNumber(BigInteger b1, BigInteger b2) {
-        b1 = new BigInteger("20000000000");
-        b2 = new BigInteger("10000000000");
-        BigInteger total = b1.add(b2);
+    public static void addBigNumbers(long x, long y) {
+        BigInteger b1 = new BigInteger(String.valueOf(x));
+        BigInteger b2 = new BigInteger(String.valueOf(y));
 
-        System.out.println("The number is: " +String.valueOf(total));
+        BigInteger total = b1.add(b2);
+        System.out.println(total);
+
+        BigInteger ten = new BigInteger("10");
+        List<Integer> hugenumber = new ArrayList<Integer>();
+        while (total.intValue() != 0) {
+            BigInteger rev_num = total.mod(ten);
+            int a = rev_num.intValue();
+            total = total.divide(ten);
+            hugenumber.add(a);
+        }
+        Collections.reverse(hugenumber);
+        System.out.println(hugenumber);
+        for (int i = 0; i < hugenumber.size(); i++) {
+            System.out.println(hugenumber.get(i) + "\r");
+        }
     }
 
     //7. is Word Symmetric
@@ -90,14 +103,10 @@ public class ArraysCollection implements Comparable{
 
         //Testing symmetric
         String s = "memem";
-        System.out.println("The word" +s+ "is symmetric ? -> " +isSymmetric(s));
+        System.out.println("The word" + s + "is symmetric ? -> " + isSymmetric(s));
 
-    }
+        addBigNumbers(15000000, 15000000);
 
-    //Method Collection.sort
-    @Override
-    public int compareTo(Object o) {
-        return 0;
     }
 
 }
